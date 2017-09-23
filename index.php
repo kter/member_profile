@@ -4,12 +4,14 @@ require_once "spyc-0.6.1/Spyc.php";
 
 class YamlIO {
   public $data;
+  public $filename;
 
   # ファイルをオープン
   # 引数:
   # $filename: 使用するファイル
   function initialize($filename = "memberinfo.yml"){
-    $this->data = Spyc::YAMLLoad($filename);
+    $this->filename = $filename;
+    $this->data = Spyc::YAMLLoad($this->filename);
   }
 
   # メンバーをファイルに追加
@@ -26,7 +28,7 @@ class YamlIO {
       'handle_name' => $handle_name,
       'image_url' => $image_url
     );
-    file_put_contents("memberinfo.yml", Spyc::YAMLDump($this->data));
+    file_put_contents($this->filename, Spyc::YAMLDump($this->data));
     var_dump($this->data);
     return count($this->data);
   }
