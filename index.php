@@ -29,7 +29,6 @@ class YamlIO {
       'image_url' => $image_url
     );
     file_put_contents($this->filename, Spyc::YAMLDump($this->data));
-    var_dump($this->data);
     return count($this->data);
   }
   # メンバーをファイルから削除
