@@ -34,7 +34,13 @@ class YamlIO {
   # メンバーをファイルから削除
   # 引数:
   # $id: メンバーID
-  function deleteMember($id){
+  function deleteMember($member_id){
+    foreach($this->data as $key => $value){
+      if($value['id'] == $member_id){
+        array_splice($this->data, $key, 1);
+        return true;
+      }
+    }
   }
   # メンバーをファイルに編集
   # 引数:
