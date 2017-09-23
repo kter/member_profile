@@ -20,6 +20,15 @@ class YamlIO {
   # 戻り値:
   # $id: メンバーID
   function addMember($real_name, $handle_name, $image_url){
+    $this->data[] = array(
+      'id' => count($this->data) + 1,
+      'real_name' => $real_name,
+      'handle_name' => $handle_name,
+      'image_url' => $image_url
+    );
+    file_put_contents("memberinfo.yml", Spyc::YAMLDump($this->data));
+    var_dump($this->data);
+    return count($this->data);
   }
   # メンバーをファイルから削除
   # 引数:
