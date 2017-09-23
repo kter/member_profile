@@ -9,7 +9,7 @@ class YamlIO {
   # 引数:
   # $filename: 使用するファイル
   function initialize($filename = "memberinfo.yml"){
-    $data = Spyc::YAMLLoad($filename);
+    $this->data = Spyc::YAMLLoad($filename);
   }
 
   # メンバーをファイルに追加
