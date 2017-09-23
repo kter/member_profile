@@ -47,7 +47,24 @@ class YamlIO {
   # $id: メンバーID
   # $attr: 変更する属性 ('real_name', 'handle_name', 'image_url'から選択)
   # $val: 変更後の値
-  function modifyMember($id, $attr, $val){
+  function modifyMember($member_id, $attr, $val){
+    foreach($this->data as $key => $value){
+      if($value['id'] == $member_id){
+        $this->data[$key][$attr]=$val;
+      }
+    }
+  }
+  # メンバー情報を取得
+  # 引数:
+  # $id: メンバーID
+  function loadMember($member_id = null){
+    if(is_null($member_id)) return $this->data;
+    foreach($this->data as $key => $value){
+      if($value['id'] == $member_id){
+        return $this->data[$key];
+      }
+    }
+    return false;
   }
 }
 ?>
