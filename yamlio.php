@@ -67,4 +67,11 @@ class YamlIO {
     return false;
   }
 }
+$yaml = new YamlIO;
+$yaml->initialize();
+header('Content-Type: application/json; charset=utf-8');
+if($_GET['type'] == 'load'){
+  $result = array("contents" => $yaml->loadMember());
+  echo(json_encode($result));
+}
 ?>
