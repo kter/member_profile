@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>メンバープロファイル</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link href="../../lib/style.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+.contents {
+  padding: 20px;
+}
+    </style>
+    <script type="text/javascript">
+$(document).ready(function(){
+  $.ajax({
+    type: "GET",
+    url: "yamlio.php",
+    data: "type=load",
+  }).done(function(result){
+    var str = $(result)[0].contents;
+    for(i=0;i<=$(str).length;i++){
+      $("#members").append('<div class="contents"><p>名前: ' + $(str)[i].real_name + '</p><p>ハンドルネーム: ' + $(str)[i].handle_name + '</p><p>画像: ' + $(str)[i].image_url + '</p></div>');
+    }
+  }).fail(function(data){
+    $("#result").text('Error');
+  });
+});
+    </script>
+  </head>
+
+  <body>
+    <div id="header"></div>
+    <div id="container">
+      <div id="mein">
+        <h1>メンバープロファイル</h1>
+
+        <div id="members">
+        </div>
+
+      </div>
+    </div>
+
+  </body>
+</html>
+
